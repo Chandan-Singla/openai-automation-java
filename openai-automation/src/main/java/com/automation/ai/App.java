@@ -1,22 +1,20 @@
 package com.automation.ai;
-//import com.automation.ai.service.ExampleService;
 
-import com.automation.ai.config.AppConfig;
-
-// public class App {
-//     public static void main(String[] args) {
-//         ExampleService service = new ExampleService();
-//         System.out.println(service.getMessage());
-//     }
-// }
-
+import com.automation.ai.git.GitDiffService;
 
 public class App {
+
     public static void main(String[] args) {
-        System.out.println("App Name   : " + AppConfig.get("app.name"));
-        System.out.println("Version    : " + AppConfig.get("app.version"));
-        System.out.println("Environment: " + AppConfig.get("app.env"));
+
+        System.out.println("Comparing branches...");
+
+        String diff = GitDiffService.getDiff("main", "feature");
+
+        if (diff.isBlank()) {
+            System.out.println("No changes detected.");
+        } else {
+            System.out.println("Changes found:\n");
+            System.out.println(diff);
+        }
     }
 }
-
-
