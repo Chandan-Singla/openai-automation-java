@@ -27,7 +27,7 @@ public class App {
         } else {
             changes = gitDiffService.getDiffBetweenCommits(source, target);
         }
-
+      
         ChangeClassifier classifier = new ChangeClassifier();
         boolean functional = classifier.hasFunctionalChange(changes);
 
