@@ -6,23 +6,31 @@ import com.automation.ai.analyzer.ChangeClassifier;
 import com.automation.ai.analyzer.ImpactAnalyzer;
 
 import java.util.List;
+import com.automation.ai.git.DiffMode;
 
 public class App {
 
     public static void main(String[] args) {
 
-        // Single service instance
         GitDiffService gitDiffService = new GitDiffService();
 
-        // Compare branches (for now)
-        List<GitChange> changes =
-                gitDiffService.getDiffBetweenBranches("feature-branch", "main");
+        // ---- CONFIG (temporary hardcoded) ----
+        DiffMode mode = DiffMode.BRANCH;
+        String source = "feature-branch";
+        String target = "main";
+        // --------------------------------------
 
-        // Functional change detection
+        List<GitChange> changes;
+
+        if (mode == DiffMode.BRANCH) {
+            changes = gitDiffService.getDiffBetweenBranches(source, target);
+        } else {
+            changes = gitDiffService.getDiffBetweenCommits(source, target);
+        }
+
         ChangeClassifier classifier = new ChangeClassifier();
         boolean functional = classifier.hasFunctionalChange(changes);
 
-        // Impact analysis
         ImpactAnalyzer impactAnalyzer = new ImpactAnalyzer();
         var impactedModules = impactAnalyzer.findImpactedModules(changes);
 

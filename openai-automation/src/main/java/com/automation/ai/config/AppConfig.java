@@ -23,8 +23,20 @@ public class AppConfig {
             throw new RuntimeException("Failed to load configuration", e);
         }
     }
-
+// to get git branch or commit details
     public static String get(String key) {
         return properties.getProperty(key);
     }
+    public static String getGitRepoPath() {
+    return properties.getProperty("git.repo.path");
+}
+
+public static String getBaseRef() {
+    return properties.getProperty("git.base.ref");
+}
+
+public static String getTargetRef() {
+    return properties.getProperty("git.target.ref");
+}
+
 }
