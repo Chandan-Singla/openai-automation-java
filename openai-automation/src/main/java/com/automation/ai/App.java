@@ -16,7 +16,7 @@ public class App {
 
         // ---- CONFIG (temporary hardcoded) ----
         DiffMode mode = DiffMode.BRANCH;
-        String source = "feature-branch";
+        String source = "case-a-functional";
         String target = "main";
         // --------------------------------------
 
