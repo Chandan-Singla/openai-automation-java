@@ -34,9 +34,20 @@ public class App {
         ImpactAnalyzer impactAnalyzer = new ImpactAnalyzer();
         var impactedModules = impactAnalyzer.findImpactedModules(changes);
 
-        System.out.println("Impacted modules:");
-        impactedModules.forEach(m -> System.out.println("- " + m));
+        // System.out.println("Impacted modules:");
+        // impactedModules.forEach(m -> System.out.println("- " + m));
 
-        System.out.println("Functional change detected: " + functional);
+        // System.out.println("Functional change detected: " + functional);
+
+        System.out.println("==== CHANGE ANALYSIS RESULT ====");
+
+if (functional) {
+    System.out.println("CASE A: Functional change detected");
+} else {
+    System.out.println("CASE B: Non-functional change only");
+}
+
+System.out.println("\nImpacted modules:");
+impactedModules.forEach(m -> System.out.println("- " + m));
     }
 }
