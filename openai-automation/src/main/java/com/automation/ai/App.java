@@ -12,11 +12,11 @@ public class App {
 
     public static void main(String[] args) {
 
-        GitDiffService gitDiffService = new GitDiffService();
+         GitDiffService gitDiffService = new GitDiffService();
 
         // ---- CONFIG (temporary hardcoded) ----
         DiffMode mode = DiffMode.BRANCH;
-        String source = "case-a-functional";
+        String source = "case-b-nonfunctional";
         String target = "main";
         // --------------------------------------
 
@@ -38,6 +38,14 @@ public class App {
         // impactedModules.forEach(m -> System.out.println("- " + m));
 
         // System.out.println("Functional change detected: " + functional);
+
+
+        // API part---------------------------------------------------
+//         ChangeAnalysisAI ai = new StubAIAnalyzer();
+// ChangeVerdict verdict = ai.analyze(changes);
+
+// System.out.println("AI Verdict: " + verdict);
+// ---------------------------------------------------------------------
 
         System.out.println("==== CHANGE ANALYSIS RESULT ====");
 
